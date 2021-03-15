@@ -35,11 +35,6 @@ public class GroupCreationTests {
     fillGroupForm(new GroupData("test1", "test2", "test3"));
     submitGroupCreation();
     returnToGroupPage();
-    Logout();
-  }
-
-  private void Logout() {
-    wd.findElement(By.linkText("Logout")).click();
   }
 
   private void returnToGroupPage() {
@@ -72,7 +67,12 @@ public class GroupCreationTests {
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
+    Logout();
     wd.quit();
+  }
+
+  private void Logout() {
+    wd.findElement(By.linkText("Logout")).click();
   }
 
   private boolean isElementPresent(By by) {
