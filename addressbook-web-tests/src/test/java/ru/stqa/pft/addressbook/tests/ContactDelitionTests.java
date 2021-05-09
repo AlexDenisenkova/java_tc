@@ -10,7 +10,7 @@ public class ContactDelitionTests extends TestBase {
 
   @Test
   public void testContactDelition() throws Exception {
-    app.getNavigationHelper().gotoToHomePage();
+    app.goTo().gotoToHomePage();
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Name", "Name2", "Nick", "Home", "Lunnaya st. 10", "1234456", "87981236655", "name@yandex.ru", "test1"), true);
     }
