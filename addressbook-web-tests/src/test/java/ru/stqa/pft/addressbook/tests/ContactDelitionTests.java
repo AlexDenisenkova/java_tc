@@ -13,7 +13,7 @@ public class ContactDelitionTests extends TestBase {
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Name", "Name2", "Nick", "Home", "Lunnaya st. 10", "1234456", "87981236655", "name@yandex.ru", "test1"), true);
     }
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(beforeC - 1);
     app.getContactHelper().deleteSelectedContacts();
     app.getContactHelper().acceptDelitionContacts();
     app.getContactHelper().returnToHomePage();
