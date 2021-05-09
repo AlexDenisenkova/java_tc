@@ -3,44 +3,16 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id;
-  private final String name;
-  private final String lastname;
-  private final String nickname;
-  private final String company;
-  private final String address;
-  private final String homephone;
-  private final String mobile;
-  private final String email;
+  private int id = Integer.MAX_VALUE;
+  private String name;
+  private String lastname;
+  private String nickname;
+  private String company;
+  private String address;
+  private String homephone;
+  private String mobile;
+  private String email;
   private String group;
-  private boolean creation;
-
-
-  public ContactData(String name, String lastname, String nickname, String company, String address, String homephone, String mobile, String email, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.name = name;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.company = company;
-    this.address = address;
-    this.homephone = homephone;
-    this.mobile = mobile;
-    this.email = email;
-    this.group = group;
-  }
-
-  public ContactData(int id, String name, String lastname, String nickname, String company, String address, String homephone, String mobile, String email, String group) {
-    this.id = id;
-    this.name = name;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.company = company;
-    this.address = address;
-    this.homephone = homephone;
-    this.mobile = mobile;
-    this.email = email;
-    this.group = group;
-  }
 
   public int getId() {
     return id;
@@ -82,9 +54,62 @@ public class ContactData {
     return group;
   }
 
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
   }
+
+  public ContactData withName(String name) {
+    this.name = name;
+    return this;
+  }
+
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  public ContactData withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withHomephone(String homephone) {
+    this.homephone = homephone;
+    return this;
+  }
+
+  public ContactData withMobile(String mobile) {
+    this.mobile = mobile;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+  public ContactData withCreation(boolean creation) {
+    this.creation = creation;
+    return this;
+  }
+
+  private boolean creation;
 
   @Override
   public String toString() {
