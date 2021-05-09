@@ -21,5 +21,8 @@ public class ContactDelitionTests extends TestBase {
     app.getContactHelper().returnToHomePage();
     List<ContactData> afterC = app.getContactHelper().getContactList();
     Assert.assertEquals(afterC.size(), beforeC.size() - 1);
+
+    beforeC.remove(beforeC.size() - 1);
+    Assert.assertEquals(beforeC, afterC);
   }
 }
