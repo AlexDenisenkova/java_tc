@@ -11,23 +11,21 @@ public class ContactDelitionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().gotoToHomePage();
-    if (! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Name", "Name2", "Nick", "Home", "Lunnaya st. 10", "1234456", "87981236655", "name@yandex.ru", "test1"), true);
+    app.goTo().homePage();
+    if (app.contact().list().size() == 0) {
+      app.contact().create(new ContactData("Name", "Name2", "Nick", "Home", "Lunnaya st. 10", "1234456", "87981236655", "name@yandex.ru", "test1"), true);
     }
   }
 
   @Test
   public void testContactDelition() throws Exception {
-    List<ContactData> beforeC = app.getContactHelper().getContactList();
-    app.getContactHelper().selectContact(beforeC.size() - 1);
-    app.getContactHelper().deleteSelectedContacts();
-    app.getContactHelper().acceptDelitionContacts();
-    app.getContactHelper().returnToHomePage();
-    List<ContactData> afterC = app.getContactHelper().getContactList();
+    List<ContactData> beforeC = app.contact().list();
+    int indexC = beforeC.size() - 1;
+    app.contact().delete(indexC);
+    List<ContactData> afterC = app.contact().list();
     Assert.assertEquals(afterC.size(), beforeC.size() - 1);
 
-    beforeC.remove(beforeC.size() - 1);
+    beforeC.remove(indexC);
     Assert.assertEquals(beforeC, afterC);
   }
 }
