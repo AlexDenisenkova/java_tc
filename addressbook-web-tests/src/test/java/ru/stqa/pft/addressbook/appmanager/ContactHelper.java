@@ -115,14 +115,16 @@ public class ContactHelper extends HelperBase {
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String firstName = cells.get(2).getText();
       String lastName =  cells.get(1).getText();
+      String[] phones = cells.get(5).getText().split("\n");
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contactCache.add(new ContactData().withId(id).withName(firstName).withLastname(lastName));
+      contactCache.add(new ContactData().withId(id).withName(firstName).withLastname(lastName)
+              .withHomephone(phones[0]).withMobile(phones[1]));
     }
     return new Contacts(contactCache);
   }
 
   public ContactData infoFromEditForm(ContactData contact) {
-    initContactModificationById(contact.getId())
+    initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
