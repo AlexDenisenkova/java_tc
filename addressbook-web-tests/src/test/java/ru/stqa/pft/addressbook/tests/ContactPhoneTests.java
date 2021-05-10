@@ -34,9 +34,6 @@ public class ContactPhoneTests extends TestBase {
             .stream().filter((s) -> ! s.equals(""))
             .map(ContactPhoneTests::cleaned)
             .collect(Collectors.joining("\n"));
-
-    return null;
-
   }
 
   public static String cleaned(String phone) {
